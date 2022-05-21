@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Animal_Wiki.Models.Family>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Family</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src=@(item.photopath) alt="a description of the image" style="width:200px;height:100px;">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.id">Info</a> |
+                <a asp-action="Index" asp-controller="Genii" asp-route-id="@item.id"> Genius</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

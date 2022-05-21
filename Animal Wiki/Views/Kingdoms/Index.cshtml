@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Animal_Wiki.Models.Kingdom>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kingdoms</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src=@(item.photopath) alt="a description of the image" style="width:200px;height:100px;">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                <a asp-action="info" asp-route-id="@item.id">info</a> |
+                <a asp-action="Index" asp-controller="Phyliums" asp-route-id="@item.id"> Phylium</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
